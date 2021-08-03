@@ -3,35 +3,28 @@ import React ,{ useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import NewView from './Components/NewView';
 // import FlatListView from './Components/FlatListView';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-  const [people, setPeople] = useState([
-    {name: 'Ian' , age: 36 , id: '1' },
-    {name: 'Steve' , age: 86 , id: '2' },
-    {name: 'Joe' , age: 46 , id: '3' },
-    {name: 'Randy' , age: 191 , id: '4' },
-    {name: 'Carl' , age: 67 , id: '5' },
-    {name: 'Jeff' , age: 22 , id: '6' }
-  ])
-//  const renderItem = ({ item }) => {
-// <Text style={{marginBottom: 50}}> {item.name}</Text>
-//  }
+ 
   return (
-    <View style={styles.container}>
-    <StatusBar style="auto" />
-    <FlatList 
-    data={people}
-    renderItem={ ({item}) => (
-      <Text style={{marginBottom:50}}>{item.name}</Text>
-    )
-
-    }
-    />
-    
-
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
