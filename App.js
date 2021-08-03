@@ -15,16 +15,21 @@ export default function App() {
     {name: 'Carl' , age: 67 , id: '5' },
     {name: 'Jeff' , age: 22 , id: '6' }
   ])
-
+//  const renderItem = ({ item }) => {
+// <Text style={{marginBottom: 50}}> {item.name}</Text>
+//  }
   return (
     <View style={styles.container}>
-     <View>
-      <Text>Header</Text>
-      </View>
-  <StatusBar style="auto" />
-    <View>
+    <StatusBar style="auto" />
+    <FlatList 
+    data={people}
+    renderItem={ ({item}) => (
+      <Text style={{marginBottom:50}}>{item.name}</Text>
+    )
 
-    </View>
+    }
+    />
+    
 
     </View>
   );
