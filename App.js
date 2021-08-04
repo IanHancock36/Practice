@@ -7,6 +7,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
 function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -14,17 +15,27 @@ function HomeScreen() {
     </View>
   );
 }
+function ProfileScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Child />
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
 const Stack = createNativeStackNavigator();
 
 
-export default function App() {
- 
-  return (
+const App = () =>{
+  return(
+  
     <NavigationContainer>
-    <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Navigator initialRouteName ="Home">
+        <Stack.Screen name="Home" component={HomeScreen} options={{title: 'Overview'}} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+  
   );
 }
 
@@ -36,3 +47,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App
